@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/questions.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<progress class="fixed-bottom" id="file" value="{{figure_value}}" max="7"> 32% </progress>
+<p style="text-align:center; font-size:25px; padding:10px 0px">الاسئلة التالية خاصة بشخصية {{figure.text}}</p>
+<div class="container">
+    
+<form  action="{% url 'questions' %}" method="post">
+    {% csrf_token %}
+    <h1 ></h1>
+    <p id="selected-figure" class="fixed-bottom">0</p>
+    <input type="hidden" name="figure_value" value="{{figure_value}}">
+    {% for question in questions %}
+    <p class="questionText">{{question.text}}</p>
+    
+    <select name="{{question.id}}" id="figure" name="language" class="custom-select" >
+        
+        <option value="1"></option>
+        <option value="2"></option>
+        <option value="3" selected></option>
+        <option value="4"></option>
+        <option value="5"></option>
+        
+    </select>
+    <div class="option-box">
+    <div  >غير موافق</div>
+    <div  >موافق</div>
+    </div>
+    {% endfor %}
+    
+    <input id="submit" type="submit" value="التالي">
+</form>
+<button onclick="ok()">dssd</button>
+</div>
+
+
+<script>
+function ok(){
+    console.log(document.getElementById("figure").length)
+}
+</script>
+<script src="{% static 'js/questions.js' %}"></script>
+{% endblock %}

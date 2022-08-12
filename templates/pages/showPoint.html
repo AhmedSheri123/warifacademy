@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/viewPoints.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<h1>نتيجة الاختبار</h1>
+<div class="container viewPointBox" dir="rtl">
+    <p class="userWlcom">مرحبا يا <span style="font-weight: bold;">{{figure.user}}</span> تم انتهاء من الاختبار</p>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_1.text}} ({{figure.figures_1_points}})</p>
+        <p class="figureText">{{figures_1_points}}</p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_2.text}} ({{figure.figures_2_points}})</p>
+        <p class="figureText">{{figures_2_points}}</p>
+    </div>
+    
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_3.text}} ({{figure.figures_3_points}})</p>
+        <p class="figureText">{{figures_3_points}}</p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_4.text}} ({{figure.figures_4_points}})</p>
+        <p class="figureText">{{figures_4_points}}</p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_5.text}} ({{figure.figures_5_points}})</p>
+        <p class="figureText">{{figures_5_points}}</p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_6.text}} ({{figure.figures_6_points}})</p>
+        <p class="figureText">{{figures_6_points}}</p>
+    </div>
+
+    <div class="space"></div>
+
+    <div class="figureBox">
+        <p class="figureText">نتيجة سمعة  {{figure.figures_7.text}} ({{figure.figures_7_points}})</p>
+        <p class="figureText">{{figures_7_points}}</p>
+    </div>
+</div>
+{% endblock %}

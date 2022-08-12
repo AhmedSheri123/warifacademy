@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" href="{% static 'css/figures.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+
+<form action="{% url 'choose2' %}" method="post">
+    {% csrf_token %}
+    <label for="cars">الان الرجاء ترشيح 7 صفات بعناية تتميز بها شخصيتك</label>
+    <p id="selected-figure" class="fixed-bottom">0</p>
+    <input type="hidden" name="user_id" value="{{user_id}}">
+    <select name="figure" id="figure" name="language" class="custom-select" multiple aria-label="multiple select example">
+    {% for figure in figures %}
+        
+        <option value="{{figure.id}}">{{figure.text}}</option>
+    {% endfor %}
+    <input id="submit" type="submit" value="التالي" style="display:none;">
+    </select>
+</form>
+<button onclick="ok()">dssd</button>
+</div>
+<script>
+function ok(){
+    console.log(document.getElementById("figure").length)
+}
+</script>
+<script src="{% static 'js/figures2.js' %}"></script>
+{% endblock %}

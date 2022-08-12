@@ -1,0 +1,138 @@
+#file {
+    margin: auto;
+    width: 80%;
+    background-color:white;
+    color: #009578;
+    margin-bottom: 25px;
+}
+progress::-webkit-progress-value {
+    background-color: #009578;
+  }
+progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+  }
+  progress::-webkit-progress-bar {
+    /* style rules */
+    color: #009578;
+  }
+progress::-moz-progress-bar {
+    /* style rules */
+    color: #009578;
+  }
+.select {
+    
+    margin: auto;
+    display: flex;
+    max-width: 600px;
+    gap: 10px;
+    justify-items: center;
+    justify-content: space-evenly;
+    align-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 30px;
+  }
+.select .option{
+    border-radius: 100%;
+}
+
+.container {
+    background-color: #ffffff;
+}
+
+.questionText {
+    text-align:center;
+    font-size:25px;
+    padding-top:60px;
+    font-weight: bold;
+    color: #576071;
+}
+
+.select__item {
+    cursor: pointer;
+
+    font-family: "Heebo", sans-serif;
+    text-align: center;
+    border: 2.5px solid #52b38a;
+    box-shadow: rgb(224, 224, 224) 1px 1px 10px 2px;
+    transition: background 0.3s;
+    border-radius: 100%;
+  }
+  
+.option-1{
+    height: 50px;
+    width: 50px;
+}
+
+.option-2{
+    height: 40px;
+    width: 40px;
+}
+
+.option-3{
+    height: 25px;
+    width: 25px;
+}
+
+.option-4{
+    height: 40px;
+    width: 40px;
+}
+
+.option-5{
+    height: 50px;
+    width: 50px;
+}
+
+  .select__item--selected {
+    background: #33a474;
+    color: #ffffff;
+  }
+
+h1{
+    display: block;
+    margin: auto;
+    text-align: center;
+    font-size: 27px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    color: #474d58;
+  }
+
+#submit{
+    display: block;
+    margin: auto;
+    background: #009578;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    margin-top: 20px;
+    padding:10px 20px;
+}
+
+#selected-figure {
+    width: 45px;
+    margin-top: -100px;
+    margin-left: 10px;
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 25px;
+    background: #009578;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.option-box{
+    font-size: 20px;
+    padding: 10px 0px;
+    font-weight: bold;
+    margin: auto;
+    display: flex;
+    color: #009578;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    max-width:600px;
+}
