@@ -7,17 +7,29 @@
 
 
 {% block content %}
-<div class="container">
+<div class="heads" ></div>
+<div class="container " style="background-color:white; margin-top:30px">
 
 <form action="{% url 'choose2' %}" method="post">
     {% csrf_token %}
-    <label for="cars">الان الرجاء ترشيح 7 صفات بعناية تتميز بها شخصيتك</label>
+    <label for="cars">دعنا نقلل الخيارات ونختار 7 سمات من 14 </label>
     <p id="selected-figure" class="fixed-bottom">0</p>
     <input type="hidden" name="user_id" value="{{user_id}}">
     <select name="figure" id="figure" name="language" class="custom-select" multiple aria-label="multiple select example">
     {% for figure in figures %}
-        
-        <option value="{{figure.id}}">{{figure.text}}</option>
+   
+        <option value="{{figure.id}}">
+
+            <div style="text-align: center; font-size:38px; color:white;font-weight: bold;">{{figure.text}}</div>
+            break
+            {% if figure.identification %}
+            <div style="text-align: center; font-size:30px; margin-top:20px;color:white;">{{figure.identification}}</div>
+            {% endif %}
+            break
+            {% if figure.example %}
+            <div style="text-align: center; font-size:30px; margin-top:20px;color:white;">مثال: {{figure.example}}</div>
+            {% endif %}
+        </option>
     {% endfor %}
     <input id="submit" type="submit" value="التالي" style="display:none;">
     </select>
@@ -25,9 +37,41 @@
 <button onclick="ok()">dssd</button>
 </div>
 <script>
+
 function ok(){
     console.log(document.getElementById("figure").length)
 }
 </script>
 <script src="{% static 'js/figures2.js' %}"></script>
+<!--
+<script>
+
+    
+    var slides = document.getElementsByClassName("select__item");
+    for (var i = 0; i < slides.length; i++) {
+       console.log(slides.item(i));
+
+       const itemElement = document.createElement("div");
+  
+       itemElement.classList.add("headers");
+       
+       
+       slides.item(i).appendChild(itemElement);
+
+    }
+
+
+    var slides = document.getElementsByClassName("headers");
+    for (var i = 0; i < slides.length; i++) {
+       console.log(slides.item(i));
+
+       const itemElement = document.createElement("img");
+       itemElement.src = "{% static 'logo/smile.png' %}"
+       itemElement.classList.add("img-smile");
+       
+       
+       slides.item(i).appendChild(itemElement);
+
+    }
+</script>-->
 {% endblock %}

@@ -1,9 +1,18 @@
+
+from enum import unique
 from django.db import models
 from users.models import Users
+from colorfield.fields import ColorField
+from tinymce.models import HTMLField
+
 # Create your models here.
 
 class Figures(models.Model):
     text = models.CharField(verbose_name="النص", max_length=250)
+    identification = models.TextField(verbose_name="تعريف", blank=True, null=True)
+    example = models.TextField(verbose_name="مثال", blank=True, null=True)
+    
+
     
     def __str__(self):
         return self.text
@@ -54,6 +63,16 @@ class pointsText(models.Model):
     _from = models.IntegerField(default=0, verbose_name="من")
     _to = models.IntegerField(default=0, verbose_name="الى")
     text = models.TextField(verbose_name="النص الذي سوف يعرض للمستخدم")
-    
+    color = ColorField(default='#FF0000')
     def __str__(self):
         return "من " + str(self._from) + " الى " + str(self._to)
+
+
+class FiguresInfo(models.Model):
+    figures = models.OneToOneField("Figures", on_delete=models.CASCADE, verbose_name="السمة", unique=True)
+    info = HTMLField()
+
+    def __str__(self):
+        return self.figures.text
+
+        

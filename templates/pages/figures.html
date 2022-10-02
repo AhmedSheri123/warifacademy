@@ -7,22 +7,38 @@
 
 
 {% block content %}
-<div class="container">
+<div style="background-color:white; margin-top:30px" class="container">
 
 <form action="{% url 'choose2' %}" method="post">
     {% csrf_token %}
-    <label for="cars">الرجاء اختيار 14 صفة تتميز بها شخصيتك</label>
+    <label for="cars">الرجاء اختيار 14 سمة تتميز بها شخصيتك</label>
     <p id="selected-figure" class="fixed-bottom">0</p>
     <select name="figure" id="figure" name="language" class="custom-select" multiple aria-label="multiple select example">
-    {% for figure in figures %}
         
-        <option value="{{figure.id}}">{{figure.text}}</option>
+    {% for figure in figures %}
+        <div>
+            
+            <option value="{{figure.id}}">
+                
+                <div style="text-align: center; font-size:38px; color:white;font-weight: bold;">{{figure.text}}</div>
+                break
+                {% if figure.identification %}
+                <div style="text-align: center; font-size:30px; margin-top:20px;color:white;">{{figure.identification}}</div>
+                {% endif %}
+                break
+                {% if figure.example %}
+                <div style="text-align: center; font-size:30px; margin-top:20px;color:white;">مثال: {{figure.example}}</div>
+                {% endif %}
+
+            </option>
+        </div>
+        
     {% endfor %}
     
     </select>
     <input id="submit" type="submit" value="التالي" style="display:none;">
 </form>
-<button onclick="ok()">dssd</button>
+
 </div>
 <script>
 function ok(){

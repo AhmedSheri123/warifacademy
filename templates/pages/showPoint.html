@@ -7,11 +7,27 @@
 
 
 {% block content %}
+
+
 <h1>نتيجة الاختبار</h1>
-<div class="container viewPointBox" dir="rtl">
+
+
+<div class="container viewPointBox" style="background-color:white; margin-top:30px; padding:30px;" dir="rtl">
     <p class="userWlcom">مرحبا يا <span style="font-weight: bold;">{{figure.user}}</span> تم انتهاء من الاختبار</p>
 
+    {% for figure in figures %}
+    <div class="figureBox" style="background-color: {{figure.3.color}};">
+        {{figure.forloop.counter }}
+        <p class="figureText">نتيجة سمة  {{figure.1}} ({{figure.2}})</p>
+        <p class="figureText">{{figure.3.text}}</p>
+    </div>
+    {% if forloop.counter < 7 %}
+    <div class="space"></div>
+    {% endif %}
+    {% endfor %}
+<!--
     <div class="figureBox">
+        {{figure.0}}
         <p class="figureText">نتيجة سمعة  {{figure.figures_1.text}} ({{figure.figures_1_points}})</p>
         <p class="figureText">{{figures_1_points}}</p>
     </div>
@@ -57,5 +73,11 @@
         <p class="figureText">نتيجة سمعة  {{figure.figures_7.text}} ({{figure.figures_7_points}})</p>
         <p class="figureText">{{figures_7_points}}</p>
     </div>
+
+
+</div>
+-->
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{% url 'ExportPdf' %}" class="btn btn-primary">رؤية النتيجة اكثر تفصيلاََ</a>
 </div>
 {% endblock %}

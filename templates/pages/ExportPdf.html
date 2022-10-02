@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load get_figures_info %}
+{% block links %}
+
+{% endblock %}
+
+{% block content %}
+
+
+<div id="StartPage13141">
+    
+<style>
+    .navs{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+        align-items: center;
+        
+    }
+    
+    .main{
+
+        background-color: white;
+        padding: 5px 30px ;
+        position: relative;
+        width: 900px;
+        border: 1px solid rgb(204, 204, 204);
+        border-radius: 5px;
+        margin: 30px auto;
+    }
+    .main-background{
+        top: 300px;
+        position:absolute;
+        right: 40%;
+
+        width: 300px;
+        filter: opacity(10%);
+        z-index: -0;
+
+    }
+    .navs h1 {
+        color: rgb(116, 116, 116);
+    }
+    .navs p {
+        color: rgb(116, 116, 116);
+    }
+    .zwsd{
+        font-size: 25px;
+        color: rgb(63, 63, 63);
+    }
+    
+    .secound-box{
+        display: flex;
+    
+    }
+    
+    .secound-box .qwer{
+        width: 200px;
+        padding: 15px;
+        border-left: 1px solid rgb(112, 112, 112);
+        
+    }
+    
+    .counter {
+        background-color: rgb(103, 179, 103);
+        border: white solid 1px;
+        padding: 2px;
+        color: white;
+        border-radius: 10px 2px 2px 2px;
+    }
+    
+    .qazx {
+        padding: 15px;
+    }
+    
+        canvas {
+            display: none;
+        }
+
+    </style>
+<div dir="rtl" id="capture" class="main">
+    {% if 'getpdf' not in request.GET %}
+    <img class="main-background" src="{{server_ip}}{% static 'logo/waraf-green.png' %}">
+    {% endif %}
+    <div class="navs" dir="rtl">
+        <h1>WarifAcademy</h1>
+        <p>{{user.username}} | {% now "SHORT_DATETIME_FORMAT" %}</p>
+    </div>
+
+
+    <p class="zwsd">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur voluptates similique dolores
+    </p>
+
+    <div class="secound-box">
+        <div class="qwer"> 
+            {% for figure in figures %}
+                <div class="counter">{{forloop.counter}}- {{figure.1}}</div>
+            {% endfor %}
+
+        </div>
+
+        <div class="qazx">
+
+            {% for figure in figures %}
+            <div class="content-text">
+                <h4>{{figure.1}}</h4>
+                {% get_info figure.1.id as info%}
+                <p>{{info|safe}}</p>
+            </div>
+            <br>
+            <br>
+            <br>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+<div id="endPage2141131"></div>
+<div style="margin: auto; text-align: center;">
+    <a href="{% url 'ExportPdf' %}?getpdf" class="btn btn-primary"  >pdf تحميل</a>
+    <a id="download" class="btn btn-primary"  >تحميل كصورة</a>
+</div>
+
+<script src="{% static 'js/html2canvas.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+
+
+
+function createImage() {
+    html2canvas(document.querySelector("#capture")).then(canvas => {
+        document.body.appendChild(canvas);
+    });
+    setTimeout(function() {
+        var canvas = document.querySelector("canvas"),
+
+        link = document.getElementById("download")
+
+        link.addEventListener(
+            "click",
+            function() {
+                link.href = canvas.toDataURL();
+                link.download = "image.png";
+            },
+            false
+        );
+        
+    }, 500);
+}
+createImage()
+</script>
+{% endblock %}
