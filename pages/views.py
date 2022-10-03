@@ -222,6 +222,7 @@ def html_to_pdf(template_src, context_dict={}):
      template = get_template(template_src)
      html  = template.render(context_dict)
      return BytesIO(html.encode('utf-8'))
+
 def ExportPdf(request):
     server_ip = ""
     print(request.build_absolute_uri())
@@ -268,4 +269,26 @@ def ExportPdf(request):
         return response
     
     return render(request, 'pages/ExportPdf.html', {'figures':figuresChoosed2, "server_ip":server_ip})
+
+
+
+
+
+def ExportPdfAllFigures(request):
+    server_ip = ""
+    print(request.build_absolute_uri())
+    if 'https' in request.build_absolute_uri():
+        server_ip = 'https://' + request.get_host()
+        
+    else:
+        server_ip = 'http://' + request.get_host()
+
+
+    figuresChoosed2 = Figures.objects.all()
+
+    
+    return render(request, 'pages/ExportPdfAllFigures.html', {'figures':figuresChoosed2, "server_ip":server_ip})
+
+
+
 #XnhPW95Q

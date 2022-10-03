@@ -110,7 +110,7 @@
     <div class="secound-box">
         <div class="qwer"> 
             {% for figure in figures %}
-                <div class="counter">-{{forloop.counter}}- {{figure.1}}</div>
+                <div class="counter">-{{forloop.counter}}- {{figure.text}}</div>
             {% endfor %}
 
         </div>
@@ -119,8 +119,8 @@
 
             {% for figure in figures %}
             <div class="content-text">
-                <h4>-{{forloop.counter}}-{{figure.1}}</h4>
-                {% get_info figure.1.id as info%}
+                <h4>-{{forloop.counter}}-{{figure.text}}</h4>
+                {% get_info figure.id as info%}
                 <p>{{info|safe}}</p>
             </div>
             <br>
@@ -190,51 +190,12 @@ html2canvas(document.querySelector("#capture"),
     document.body.appendChild(canvas)
 });
 
-document.querySelector("#closeBtn").addEventListener(
-            "click",
-            function() {
-                a = document.querySelector("#exampleModal");
-                a.style.display = 'none';
-                a.classList.remove("show");
-                
-            },
-            false
-        );
+
 
 
 var getPdf = document.querySelector("#getPdf");
 
-getPdf.addEventListener(
-            "click",
-            function() {
 
-                var element = document.getElementById('capture');
-                console.log("element.height")
-                console.log(element.offsetHeight)
-                var opt = {
-                    pagebreak: {avoid:'*'},
-
-                    margin:       [-2,0],
-                    filename:     'myfile.pdf',
-                    image:        { type: 'jpeg', quality: 3 },
-                    html2canvas:  { scale: 2 , height:element.offsetHeight +1150},
-                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-                };
-                
-                // New Promise-based usage:
-                html2pdf().set(opt).from(element).save();
-                
-            },
-            false
-        );
-
-function createImage() {
-
-    setTimeout(function() {
-        
-        
-    }, 500);
-}
 
 /*        a = document.querySelector("#exampleModal");
 a.dataset.target = "#exampleModal";
@@ -253,7 +214,6 @@ link.addEventListener(
     "click",
     function() {
 
-        createImage()
         var canvas = document.querySelector("canvas")
         
 

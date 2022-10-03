@@ -12,11 +12,11 @@ class Migration(migrations.Migration):
     operations = [
         migrations.RemoveField(
             model_name='figures',
-            name='example',
+            name='_example',
         ),
         migrations.AddField(
             model_name='question',
-            name='example',
+            name='_example',
             field=models.TextField(blank=True, null=True, verbose_name='مثال'),
         ),
     ]

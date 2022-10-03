@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='figures',
-            name='example',
+            name='_example',
             field=models.TextField(blank=True, null=True, verbose_name='مثال'),
         ),
     ]
